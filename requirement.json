@@ -1,0 +1,12 @@
+{
+  "comment":"my module name is eclass",
+  "requirement":"openedoo_core",
+  "version":"0.1.0",
+  "pip_library":[
+
+  ],
+  "name":"eclass",
+  "url":null,
+  "url_endpoint":"web/eclass",
+  "type":"end_point"
+}
