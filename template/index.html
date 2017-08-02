@@ -11,50 +11,6 @@
 
         <div id='root'></div>
 
-        <script type="text/babel">
-            var EclassListComponent = React.createClass({
-
-                getInitialState: function() {
-                    return {
-                        eclassCollection: []
-                    }
-                },
-
-                getEclassCollection: function() {
-                    fetch('/api/v1/eclass')
-                        .then( (response) => {
-                            return response.json()
-                        })
-                        .then( (json) => {
-                            var arr = JSON.parse(json)
-                            this.setState({eclassCollection: arr})
-                        })
-                },
-
-                componentWillMount: function() {
-                    this.getEclassCollection()
-                },
-
-                render: function() {
-                    var { eclassCollection } = this.state;
-
-                    if (eclassCollection.length === 0) {
-                        return (
-                            <div><p>Eclass will show up here, make one!</p></div>
-                        )
-                    }
-
-                    return (
-                        <div>
-                            {eclassCollection.map(eclass =>
-                                <li key={eclass.id}>{eclass.name}</li>
-                            )}
-                        </div>
-                    )
-                }
-            });
-
-            ReactDOM.render(<EclassListComponent />, document.querySelector('#root'))
-        </script>
+        <script type="text/babel" src="{{ url_for('eclass.static', filename='eclassCollectionComponent.js') }}"></script>
     </body>
 </html>
