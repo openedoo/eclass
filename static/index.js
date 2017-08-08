@@ -33,6 +33,20 @@ class EmptyEclassMessage extends React.Component {
     }
 }
 
+class EclassInList extends React.Component {
+    render() {
+        return (
+            <div>
+                <div className="well">
+                    <h4>{this.props.eclassName}</h4>
+                    <p>{this.props.eclassCourse}</p>
+                    <p>{this.props.eclassUniv}</p>
+                </div>
+            </div>
+        )
+    }
+}
+
 class EclassCollectionComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -71,11 +85,22 @@ class EclassCollectionComponent extends React.Component {
         return (
             <div>
                 <TopBar></TopBar>
-                <div>
-                    {eclassCollection.map(eclass =>
-                        <li key={eclass.id}><Link to={ "/web/eclass/" + eclass.id }>{eclass.name}</Link></li>
-                    )}
+
+                <div className="row">
+                    <ul className="list-unstyled col-md-6 col-md-offset-3">
+                        {eclassCollection.map(eclass =>
+                            <li key={eclass.id}>
+                                <Link to={ "/web/eclass/" + eclass.id }>
+                                    <EclassInList
+                                        eclassName={eclass.name}
+                                        eclassCourse={eclass.course}
+                                        eclassUniv={eclass.university} />
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
                 </div>
+
             </div>
         )
     }
