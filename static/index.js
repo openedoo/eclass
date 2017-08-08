@@ -1,5 +1,17 @@
 let { Router, Route, Link, browserHistory } = window.ReactRouter;
 
+class EmptyEclassMessage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div><p>Eclass will show up here, make one!</p></div>
+        )
+    }
+}
+
 class EclassCollectionComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -70,19 +82,20 @@ class EclassInformationComponent extends React.Component {
     render() {
         let { eclass } = this.state;
 
+        let eclassList = null;
         if (eclass.length === 0) {
-            return (
-                <div><p>Eclass will show up here, make one!</p></div>
+            eclassList = <EmptyEclassMessage />;
+        } else {
+            eclassList = (
+                <div>
+                    {eclass.map(info =>
+                        <li key={info.id}><Link to={ "/web/eclass/" + info.id }>{info.name}</Link></li>
+                    )}
+                </div>
             )
         }
 
-        return (
-            <div>
-                {eclass.map(info =>
-                    <li key={info.id}><Link to={ "/web/eclass/" + info.id }>{info.name}</Link></li>
-                )}
-            </div>
-        )
+        return eclassList;
     }
 }
 
