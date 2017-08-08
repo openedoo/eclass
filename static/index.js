@@ -1,5 +1,26 @@
 let { Router, Route, Link, browserHistory } = window.ReactRouter;
 
+class TopBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            homeTitle: 'Eclass',
+            homeUrl: '/web/eclass'
+        }
+    }
+
+    render() {
+        let { homeTitle, homeUrl } = this.state;
+        return (
+            <nav className="navbar navbar-default navbar-static-top" role="navigation">
+                <div className="navbar-header">
+                    <a className="navbar-brand" href={ homeUrl }>{ homeTitle }</a>
+                </div>
+            </nav>
+        )
+    }
+}
+
 class EmptyEclassMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -40,15 +61,21 @@ class EclassCollectionComponent extends React.Component {
 
         if (eclassCollection === 0) {
             return (
-                <div><p>Eclass will show up here, make one!</p></div>
+                <div>
+                    <TopBar></TopBar>
+                    <div><p>Eclass will show up here, make one!</p></div>
+                </div>
             )
         }
 
         return (
             <div>
-                {eclassCollection.map(eclass =>
-                    <li key={eclass.id}><Link to={ "/web/eclass/" + eclass.id }>{eclass.name}</Link></li>
-                )}
+                <TopBar></TopBar>
+                <div>
+                    {eclassCollection.map(eclass =>
+                        <li key={eclass.id}><Link to={ "/web/eclass/" + eclass.id }>{eclass.name}</Link></li>
+                    )}
+                </div>
             </div>
         )
     }
