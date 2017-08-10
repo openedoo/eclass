@@ -71,17 +71,18 @@ class EclassCollectionComponent extends React.Component {
 
         if (eclassCollection === 0) {
             return (
-                <div>
-                    <TopBar></TopBar>
-                    <div><p>Eclass will show up here, make one!</p></div>
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
+                        <div className="well">
+                            <p className="text-center">Eclass will show up here, make one!</p>
+                        </div>
+                    </div>
                 </div>
             )
         }
 
         return (
             <div>
-                <TopBar></TopBar>
-
                 <div className="row">
                     <ul className="list-unstyled col-md-6 col-md-offset-3">
                         {eclassCollection.map(eclass =>
@@ -96,7 +97,6 @@ class EclassCollectionComponent extends React.Component {
                         )}
                     </ul>
                 </div>
-
             </div>
         )
     }
@@ -147,9 +147,20 @@ class EclassInformationComponent extends React.Component {
     }
 }
 
+class EclassHomepage extends React.Component {
+    render() {
+        return (
+            <div className="wrapper">
+                <TopBar/>
+                <EclassCollectionComponent wait={1000}/>
+            </div>
+        )
+    }
+}
+
 ReactDOM.render((
     <Router history={browserHistory}>
-      <Route path='/web/eclass/' component={EclassCollectionComponent}>
+      <Route path='/web/eclass/' component={EclassHomepage}>
       </Route>
       <Route path='/web/eclass/:id' component={EclassInformationComponent}>
       </Route>
