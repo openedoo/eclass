@@ -24,7 +24,15 @@ class TopBar extends React.Component {
 class EmptyEclassMessage extends React.Component {
     render() {
         return (
-            <div><p>Eclass will show up here, make one!</p></div>
+            <div>
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
+                        <div className="well">
+                            <p className="text-center">Eclass will show up here, make one!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
@@ -71,12 +79,8 @@ class EclassCollectionComponent extends React.Component {
 
         if (eclassCollection.length === 0) {
             return (
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <div className="well">
-                            <p className="text-center">Eclass will show up here, make one!</p>
-                        </div>
-                    </div>
+                <div>
+                    <EmptyEclassMessage />
                 </div>
             )
         }
