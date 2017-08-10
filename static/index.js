@@ -69,7 +69,7 @@ class EclassCollectionComponent extends React.Component {
     render() {
         let { eclassCollection } = this.state;
 
-        if (eclassCollection === 0) {
+        if (eclassCollection.length === 0) {
             return (
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
