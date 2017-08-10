@@ -22,10 +22,6 @@ class TopBar extends React.Component {
 }
 
 class EmptyEclassMessage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div><p>Eclass will show up here, make one!</p></div>
